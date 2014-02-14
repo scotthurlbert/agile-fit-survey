@@ -1,8 +1,11 @@
 <div class="hero-unit">
 	<h1>The Agile Fit Check</h1>
-	<div class="description" ng-show="q < 10">
+	<div class="description" ng-show="q==0">
 		<p>Here are nine simple questions which will help evaluate your Agile fit.</p>
-		<p>Answers of "agree" and "disagree" will be accepted without question.  "Strongly agree" and "strongly disagree" require additional information.  Please answer honestly, describing how your team does things today, not how you hope they will do them in the future.</p>
+		<p>Answers of "agree" and "disagree" will be accepted without question.  "Strongly agree" 
+			and "strongly disagree" require additional information.</p> 
+		<p>Please answer honestly. Describe 
+			how your team does things today, not how you hope they will do them in the future.</p>
 	</div>
 	<!-- 
   <h1>Reminders</h1>
@@ -17,6 +20,13 @@
 
 	<div class="card">
 
+		<div class="question" ng-show="q==0" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				<input type="button" ng-click="next()" value="Let's begin">
+				
+			</div>
+		</div>
+		
 		<div class="question" ng-show="q==1" ng-animate="{show: 'fadeIn'}">
 			<div class="poll-question">
 				Our highest priority is to
@@ -38,7 +48,7 @@
 				<span class="required">required</span><br><br>
 				<textarea class="strongly-agree-activities" type="textarea" name="g2activities" ng-model="g2activities" value=""></textarea><br>
 				Agile places a high priority on removing red-tape from the development process.<br><br>
-				<b>Are your developers empowered to perform each of these activities without the approval of a manager?</b> 
+				<b>Are the members of your team empowered to perform each of these activities without the approval of a manager?</b> 
 				<span class="required">required</span><br><br>
 				<input type="radio" name="g2devpermission" ng-model="g2devpermission" value="yes" title=""> Yes<br>
 				<input type="radio" name="g2devpermission" ng-model="g2devpermission" value="no" title=""> No<br>
@@ -102,7 +112,8 @@
 				<input type="radio" name="g4teamroom" ng-model="g4teamroom" value="no" title=""> No
 					<input type="button" ng-show="g4teamroom=='no'" ng-click="g4teamroom = ''" value="undo"><br><br>
 				<span ng-show="g4teamroom=='no'"> <b>If team is not co-located, please click 'agree'</b><br><br></span>
-				<span class="note">If the above is yes, then could put a question here about whether the team has face-to-face access to the product owner.</span>
+				<span class="note">If the above is yes, then could put a question here about whether the team has face-to-face 
+					access to the product owner.</span>
 			</div>
 			<div class="poll-options">
 				<input type="radio" name="group4" ng-model="g4" value="2"> strongly agree<br>
@@ -133,7 +144,7 @@
 				<br>Type other measures in the box below:
 				<textarea class="other-measures" ng-disabled="g5done" type="textarea" name="g5other" ng-model="g5other" value=""></textarea><br>
 
-				<input type="button" ng-disabled="g5done" ng-click="g5done = true" value="done"> <span ng-show="!g5done">Click done to when finished</span>
+				<input type="button" ng-disabled="g5done" ng-click="g5done = true" value="done"> <span ng-show="!g5done">Click done when finished</span>
 					<input type="button" ng-show="g5done" ng-click="g5done = false" value="undo"> 
 					<span ng-show="g5done">If you wish to retract your answer you can click 'undo'</span><br><br>			
 				<span ng-show="g5done && g5userstoriesreleased"><b>'User Stories Released' is Agile's primary measure of progress.</b></span>
@@ -142,7 +153,7 @@
 				<span class="note" ng-show="!g5done">Note: primary should mean choose one, but lots of projects have multiple masters 
 				and you end up explaining why the schedule is the way it is to this group and why the 
 				spending is the way it is to that group.  If that happens and decisions of a primary nature
-				happen, then those are primary measures for the purposes of this question</span>
+				happen because of this, then those are primary measures for the purposes of this question</span>
 			</div>
 			<div class="poll-options">
 				<input type="radio" name="group5" ng-model="g5" value="2"> strongly agree<br>
@@ -161,6 +172,17 @@
 			<div class="poll-question">
 				Sponsors, developers, and users should be able to maintain a constant pace indefinitely (no nights and weekends)
 			</div>
+			<div class="strongly-agree-drilldown" ng-show="g6==2">
+				Agile requires that teams maintain a sustainable pace.<br><br>
+				How do you avoid the need for overtime and weekend work to meet your project goals?
+				<span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g6activities" ng-model="g6activities" value=""></textarea><br>
+				<p class="description" ng-show="!disableNext()" ng-animate="{show: 'fadeIn'}">
+					Agile suggests that teams establish a velocity based on how much work they can accomplish
+					at a sustainable pace over a fixed period of time. When planning how much work to commit to, 
+					teams use this velocity to set expectations.
+				</p>
+			</div>
 			<div class="poll-options">
 				<input type="radio" name="group6" ng-model="g6" value="2"> strongly agree<br>
 				<input type="radio" name="group6" ng-model="g6" value="1"> agree<br>
@@ -178,13 +200,23 @@
 			<div class="poll-question">
 				Simplicity [of work] is essential. If it can be done in a simpler way, it should.
 			</div>
+			<div class="strongly-agree-drilldown" ng-show="g7==2">
+				Agile tries to avoid complicatedness by encouraging simplicity.<br><br>
+				Please share an example or two of your team removing complicatedness and making things simpler?
+				<span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g7activities" ng-model="g7activities" value=""></textarea><br>
+				<p class="description" ng-show="!disableNext()" ng-animate="{show: 'fadeIn'}">
+					You may be interested in this talk: <br>
+						<a href="http://www.ted.com/talks/yves_morieux_as_work_gets_more_complex_6_rules_to_simplify.html" target="_blank">Yves Morieux: As work gets more complex, 6 rules to simplify</a>
+				</p>
+			</div>
 			<div class="poll-options">
 				<input type="radio" name="group7" ng-model="g7" value="2"> strongly agree<br>
 				<input type="radio" name="group7" ng-model="g7" value="1"> agree<br>
 				<input type="radio" name="group7" ng-model="g7" value="-1"> disagree<br>
 				<input type="radio" name="group7" ng-model="g7" value="-2"> strongly disagree<br>
 				<div class="strongly-disagree-drilldown" ng-show="g7==-2">
-					Please explain why you disagree with the idea that work should be simple on the whole:
+					Please explain why you disagree with the idea that work should be simple, not complicated:
 					<span class="required">required</span><br><br>
 					<textarea class="strongly-disagree-reasons" type="textarea" name="g7reasons" ng-model="g7reasons" value=""></textarea>	
 				</div>		
@@ -195,11 +227,27 @@
 			<div class="poll-question">
 				Self-organizing teams are best for architectures, requirements, and designs
 			</div>
+
+			<div class="strongly-agree-drilldown" ng-show="g8==2">
+				<p class="description">This core concept means that decisions about how things are to be done are best
+				made by the people closest to the work. Management may establish the rules, but
+				the team decides how to carry out the project within those boundaries.</p><br>
+				<p class="description">Describe the ways in which your team is empowered to make their own architectural, requirement, 
+				and design decisions: <span class="required">required</span></p>
+				<br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g8activities" ng-model="g8activities" value=""></textarea><br>
+			</div>
+
 			<div class="poll-options">
 				<input type="radio" name="group8" ng-model="g8" value="2"> strongly agree<br>
 				<input type="radio" name="group8" ng-model="g8" value="1"> agree<br>
 				<input type="radio" name="group8" ng-model="g8" value="-1"> disagree<br>
 				<input type="radio" name="group8" ng-model="g8" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g8==-2">
+					Please explain why you disagree with letting teams find their own architecture, requirements, and designs:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g8reasons" ng-model="g8reasons" value=""></textarea>	
+				</div>		
 			</div>
 		</div>
 	
@@ -238,24 +286,25 @@
 		</div>
 
 		<div class="question" ng-show="q==10" ng-animate="{show: 'fadeIn'}">
-			<h3>Your results will go here (eventually).</h3>
-			<p ng-class="{warn: g1<1, bold: g1==1}">g1: {{g1}}</p>
-			<p>g2: {{g2}}</p>
-			<p>g3: {{g3}}</p>
-			<p>g4: {{g4}}</p>
-			<p>g5: {{g5}}</p>
-			<p>g6: {{g6}}</p>
-			<p>g7: {{g7}}</p>
-			<p>g8: {{g8}}</p>
-			<p>g9: {{g9}}</p>
-			<p>Your score is: {{getScore()}}</p>
-			<br>
+			<div class="score-summary">
+				<p ng-class="{boldwarning: g1<1, bold: g1==1, agile: g1==2}">g1: {{g1}}</p>
+				<p ng-class="{boldwarning: g2<1, bold: g2==1, agile: g2==2}">g2: {{g2}}</p>
+				<p ng-class="{boldwarning: g3<1, bold: g3==1, agile: g3==2}">g3: {{g3}}</p>
+				<p ng-class="{boldwarning: g4<1, bold: g4==1, agile: g4==2}">g4: {{g4}}</p>
+				<p ng-class="{boldwarning: g5<1, bold: g5==1, agile: g5==2}">g5: {{g5}}</p>
+				<p ng-class="{boldwarning: g6<1, bold: g6==1, agile: g6==2}">g6: {{g6}}</p>
+				<p ng-class="{boldwarning: g7<1, bold: g7==1, agile: g7==2}">g7: {{g7}}</p>
+				<p ng-class="{boldwarning: g8<1, bold: g8==1, agile: g8==2}">g8: {{g8}}</p>
+				<p ng-class="{boldwarning: g9<1, bold: g9==1, agile: g9==2}">g9: {{g9}}</p>
+				<p>Your score is: {{getScore()}}</p>
+			</div>
 			
 			<p ng-show="getScore() > 15">It sounds like you have a great Agile shop.  Teams can always improve and it sounds
 			like yours takes that message to heart and applies it to it's work.</p>
 			
 			<p ng-show="getScore() >= 11 && getScore() <= 15">You have a lot of practices that support Agile but 
-			there is room for improvement.  At this level you could probably benifit greatly from some fine tuning.</p>
+			there is room for improvement.  At this level you could probably benifit from some fine tuning.  Time
+			to take it to the next level!</p>
 			
 			<p ng-show="getScore() > 6 && getScore() < 11">You seem to understand the concept of working Agile 
 			but currently have few practices that are in alignment with the Agile principles. Your team might benifit
@@ -285,12 +334,13 @@
 	</div> -->
 
 	<div class="prev-next">
-		<input type="button" ng-show="q < 10" ng-disabled="disablePrev()" ng-click="prev()" value="Prev">
-		<input type="button" ng-show="q < 9" ng-disabled="disableNext()" ng-click="next()" value="Next">
+		<input type="button" ng-show="q > 0 && q < 10" ng-disabled="disablePrev()" ng-click="prev()" value="Prev">
+		<input type="button" ng-show="q > 0 && q < 9" ng-disabled="disableNext()" ng-click="next()" value="Next">
 		<input type="button" ng-show="q == 9" ng-disabled="disableShowResults()" ng-click="next()" value="Show Results">		<!--  -->
 	</div>
 	<!-- -->
-	<div class="quick-nav">	<!--  ng-show="surveyFinished"-->
+	<div class="quick-nav" ng-show="q > 0">	<!--  ng-show="surveyFinished"-->
+		<input type="button" ng-disabled="q==0" ng-click="startOver()" value="start over">
 		<input type="button" ng-class="{active: q==1}" ng-disabled="maxQ < 1" ng-click="q = 1" value="1">
 		<input type="button" ng-class="{active: q==2}" ng-disabled="maxQ < 2" ng-click="q = 2" value="2">
 		<input type="button" ng-class="{active: q==3}" ng-disabled="maxQ < 3" ng-click="q = 3" value="3">
@@ -302,5 +352,9 @@
 		<input type="button" ng-class="{active: q==9}" ng-disabled="maxQ < 9" ng-click="q = 9" value="9">
 		<input type="button" ng-show="q != 10 && surveyFinished" ng-disabled="disableShowResults()" ng-click="q = 10" value="Show Results">
 	</div>
-	
+	<br><br> <!-- debugging buttons
+	<input type="button" ng-show="q > 0" ng-click="goto6()" value="GoTo 6"/> 
+	<input type="button" ng-show="q > 0" ng-click="goto7()" value="GoTo 7"/>
+	<input type="button" ng-show="q > 0" ng-click="gotoShowResults()" value="GoToShowResults"/> -->
+
 </div>
