@@ -1,0 +1,306 @@
+<div class="hero-unit">
+	<h1>The Agile Fit Check</h1>
+	<div class="description" ng-show="q < 10">
+		<p>Here are nine simple questions which will help evaluate your Agile fit.</p>
+		<p>Answers of "agree" and "disagree" will be accepted without question.  "Strongly agree" and "strongly disagree" require additional information.  Please answer honestly, describing how your team does things today, not how you hope they will do them in the future.</p>
+	</div>
+	<!-- 
+  <h1>Reminders</h1>
+  <p>Here are your recurring reminders:</p>
+
+  <ul>
+      <span ng-repeat="person in people"><li ng-repeat="cal in person.Calendars">{{cal.ShortName}}</li></span>
+  </ul>
+ 
+ 
+	<h2>Score: {{ getScore() }}</h2> -->
+
+	<div class="card">
+
+		<div class="question" ng-show="q==1" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Our highest priority is to
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group1" ng-model="g1" value="-2"> deliver valuable software on schedule<br>
+				<input type="radio" name="group1" ng-model="g1" value="-1"> deliver valuable software on budget<br>
+				<input type="radio" name="group1" ng-model="g1" value="2"> deliver valuable software using continuous delivery<br>
+				<input type="radio" name="group1" ng-model="g1" value="1"> deliver valuable software with a minimum of bugs<br> 
+			</div>
+		</div>
+		
+		<div class="question" ng-show="q==2" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Our team welcomes changing requirements, even late in development 
+			</div>
+			<div class="strongly-agree-drilldown" ng-show="g2==2">
+				List the activies your team performs because you welcome changing requirements: 
+				<span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g2activities" ng-model="g2activities" value=""></textarea><br>
+				Agile places a high priority on removing red-tape from the development process.<br><br>
+				<b>Are your developers empowered to perform each of these activities without the approval of a manager?</b> 
+				<span class="required">required</span><br><br>
+				<input type="radio" name="g2devpermission" ng-model="g2devpermission" value="yes" title=""> Yes<br>
+				<input type="radio" name="g2devpermission" ng-model="g2devpermission" value="no" title=""> No<br>
+				<span ng-show="g2devpermission=='no'"> 
+					<br><b>Remove any activities which require managerial approval because those are unlikely to be 
+					compatible with the Agile process.  Then click 'Yes'</b></span>
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group2" ng-model="g2" value="2" title="we will adjust our system to optimize for changes">
+				<span title="we will adjust our system to optimize for changes"> strongly agree</span><br>
+				<input type="radio" name="group2" ng-model="g2" value="1" title="we agree but don't want changes to be disruptive"><span title="we agree but don't want changes to be disruptive">  agree</span><br>
+				<input type="radio" name="group2" ng-model="g2" value="-1" title="change is inevitable but we find it to be very disruptive"><span title="change is inevitable but we find it to be very disruptive"> disagree</span><br>
+				<input type="radio" name="group2" ng-model="g2" value="-2" title="we want to lock things down before development to minimize the impact of changes"><span title="we want to lock things down before development to minimize the impact of changes"> strongly disagree</span><br>
+				<div class="strongly-disagree-drilldown" ng-show="g2==-2">
+					Please list some of the reasons you strongly disagree with accepting changes during development: 
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g2reasons" ng-model="g2reasons" value=""></textarea>	
+				</div>
+			</div>
+		</div>
+
+		<div class="question" ng-show="q==3" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Business people and developers must work together daily on the project
+			</div>
+			<div class="strongly-agree-drilldown" ng-show="g3==2">
+				List the activies your team performs because you support the business people and developers working together: 
+				<span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g3activities" ng-model="g3activities" value=""></textarea><br>
+				Agile places a high value on business people and development staff working together.<br><br>
+				Are there any roadblocks that would prevent the business people and developers from working together 
+				on any of the listed activities? 
+				<span class="required">required</span><br><br>
+				<input type="radio" name="g3devpermission" ng-model="g3devpermission" value="yes" title=""> Yes<br>
+				<input type="radio" name="g3devpermission" ng-model="g3devpermission" value="no" title=""> No<br>
+				<span ng-show="g3devpermission=='yes'"> <b>Remove any activities which have roadblocks 
+				because those are unlikely to be compatible with the Agile process.  Then click 'No'</b></span>
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group3" ng-model="g3" value="2"> strongly agree<br>
+				<input type="radio" name="group3" ng-model="g3" value="1"> agree<br>
+				<input type="radio" name="group3" ng-model="g3" value="-1"> disagree<br>
+				<input type="radio" name="group3" ng-model="g3" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g3==-2">
+					Please list some of the reasons you strongly disagree with business people and development staff working together:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g3reasons" ng-model="g3reasons" value=""></textarea>	
+				</div>		
+			</div>
+		</div>
+	
+		<div class="question" ng-show="q==4" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Our team believes the most efficient and effective method of communication is face-to-face conversation
+			</div>
+			<div class="strongly-agree-drilldown" ng-show="g4==2">
+				Agile places a high value on face to face, in person communication.<br><br>
+				Are all of your team members co-located in a team room? 
+				<span class="required">required</span><br><br>
+				<input type="radio" ng-disabled="g4teamroom=='no'" name="g4teamroom" ng-model="g4teamroom" value="yes" title=""> Yes<br>
+				<input type="radio" name="g4teamroom" ng-model="g4teamroom" value="no" title=""> No
+					<input type="button" ng-show="g4teamroom=='no'" ng-click="g4teamroom = ''" value="undo"><br><br>
+				<span ng-show="g4teamroom=='no'"> <b>If team is not co-located, please click 'agree'</b><br><br></span>
+				<span class="note">If the above is yes, then could put a question here about whether the team has face-to-face access to the product owner.</span>
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group4" ng-model="g4" value="2"> strongly agree<br>
+				<input type="radio" name="group4" ng-model="g4" value="1"> agree<br>
+				<input type="radio" name="group4" ng-model="g4" value="-1"> disagree<br>
+				<input type="radio" name="group4" ng-model="g4" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g4==-2">
+					Please list some of the reasons you strongly disagree that team members should work face to face:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g4reasons" ng-model="g4reasons" value=""></textarea>	
+				</div>		
+			</div>		
+		</div>
+	
+		<div class="question" ng-show="q==5" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Working software is the primary measure of progress
+			</div>
+			<div class="strongly-agree-drilldown" ng-show="g5==2">
+				Check all that your team considers primary measures for progress: <span class="required">required</span><br><br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5projectschedule" value="Timeline">Project Plan Schedule<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5userstory" value="UserStory">User Stories Completed<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5tests" value="Tests">Test Coverage / Test passed<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5defects" value="DefectCount">Defect Count (lower is better)<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5userstoriesreleased" value="UserStory">User Stories Released<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5projectplan" value="ProjectPlan">Project Plan Gant<br>
+				<input type="checkbox" ng-disabled="g5done" name="g5progress" ng-model="g5budget" value="BudgetSpent">Budget Spent<br>
+				<br>Type other measures in the box below:
+				<textarea class="other-measures" ng-disabled="g5done" type="textarea" name="g5other" ng-model="g5other" value=""></textarea><br>
+
+				<input type="button" ng-disabled="g5done" ng-click="g5done = true" value="done"> <span ng-show="!g5done">Click done to when finished</span>
+					<input type="button" ng-show="g5done" ng-click="g5done = false" value="undo"> 
+					<span ng-show="g5done">If you wish to retract your answer you can click 'undo'</span><br><br>			
+				<span ng-show="g5done && g5userstoriesreleased"><b>'User Stories Released' is Agile's primary measure of progress.</b></span>
+				<span class="warning" ng-show="g5done && !g5userstoriesreleased"><b>'User Stories Released' is Agile's primary measure of progress.</b></span>
+
+				<span class="note" ng-show="!g5done">Note: primary should mean choose one, but lots of projects have multiple masters 
+				and you end up explaining why the schedule is the way it is to this group and why the 
+				spending is the way it is to that group.  If that happens and decisions of a primary nature
+				happen, then those are primary measures for the purposes of this question</span>
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group5" ng-model="g5" value="2"> strongly agree<br>
+				<input type="radio" name="group5" ng-model="g5" value="1"> agree<br>
+				<input type="radio" name="group5" ng-model="g5" value="-1"> disagree<br>
+				<input type="radio" name="group5" ng-model="g5" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g5==-2">
+					Please list some of the reasons you strongly disagree that team members should work face to face:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g5reasons" ng-model="g5reasons" value=""></textarea>	
+				</div>		
+			</div>
+		</div>
+	
+		<div class="question" ng-show="q==6" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Sponsors, developers, and users should be able to maintain a constant pace indefinitely (no nights and weekends)
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group6" ng-model="g6" value="2"> strongly agree<br>
+				<input type="radio" name="group6" ng-model="g6" value="1"> agree<br>
+				<input type="radio" name="group6" ng-model="g6" value="-1"> disagree<br>
+				<input type="radio" name="group6" ng-model="g6" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g6==-2">
+					Please list some of the reasons you strongly disagree that the team should maintain a constant pace:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g6reasons" ng-model="g6reasons" value=""></textarea>	
+				</div>		
+			</div>
+		</div>
+	
+		<div class="question" ng-show="q==7" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Simplicity [of work] is essential. If it can be done in a simpler way, it should.
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group7" ng-model="g7" value="2"> strongly agree<br>
+				<input type="radio" name="group7" ng-model="g7" value="1"> agree<br>
+				<input type="radio" name="group7" ng-model="g7" value="-1"> disagree<br>
+				<input type="radio" name="group7" ng-model="g7" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g7==-2">
+					Please explain why you disagree with the idea that work should be simple on the whole:
+					<span class="required">required</span><br><br>
+					<textarea class="strongly-disagree-reasons" type="textarea" name="g7reasons" ng-model="g7reasons" value=""></textarea>	
+				</div>		
+			</div>
+		</div>
+	
+		<div class="question" ng-show="q==8" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Self-organizing teams are best for architectures, requirements, and designs
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group8" ng-model="g8" value="2"> strongly agree<br>
+				<input type="radio" name="group8" ng-model="g8" value="1"> agree<br>
+				<input type="radio" name="group8" ng-model="g8" value="-1"> disagree<br>
+				<input type="radio" name="group8" ng-model="g8" value="-2"> strongly disagree<br>
+			</div>
+		</div>
+	
+		<div class="question" ng-show="q==9" ng-animate="{show: 'fadeIn'}">
+			<div class="poll-question">
+				Regular retrospectives are important to tune and adjust our process
+			</div>
+			<div class="strongly-agree-drilldown" ng-show="g9==2">
+				Describe how often you have retrospectives and the activities you engage in during the retrospectives: <span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g9activities" ng-model="g9activities" value=""></textarea><br>
+				Are your retrospectives used to modify the team's process moving forward?<br><br>
+				<input type="radio" name="g9devpermission" ng-model="g9devpermission" ng-disabled="g9devpermission=='no'" value="yes" title=""> Yes<br>
+				<input type="radio" name="g9devpermission" ng-model="g9devpermission" value="no" title=""> No 
+					<input type="button" ng-show="g9devpermission=='no'" ng-click="g9devpermission = ''" value="undo"><br>
+				<span ng-show="g9devpermission=='no'"> 
+					<br><b>Please click 'agree'.  The purpose of the retrospectives is to modify the team's behaviour 
+						as it moves forward.</b><br><br>
+					If you wish to retract your answer you can click 'undo' to enable 'Yes' as a choice.
+				</span>
+				<div ng-show="g9devpermission=='yes'">
+				<br>Please list some examples of things you have changed in the past as a result of retrospective feedback: <span class="required">required</span><br><br>
+				<textarea class="strongly-agree-activities" type="textarea" name="g9examples" ng-model="g9examples" value=""></textarea><br>
+				</div>
+			</div>
+			<div class="poll-options">
+				<input type="radio" name="group9" ng-model="g9" value="2"> strongly agree<br>
+	
+				<input type="radio" name="group9" ng-model="g9" value="1"> agree<br>
+				<input type="radio" name="group9" ng-model="g9" value="-1"> disagree<br>
+				<input type="radio" name="group9" ng-model="g9" value="-2"> strongly disagree<br>
+				<div class="strongly-disagree-drilldown" ng-show="g9==-2">
+						Describe why you strongly disagree with retrospectives:<br>
+						<textarea class="strongly-disagree-reasons" type="textarea" name="g9reasons" ng-model="g9reasons" value=""></textarea>	
+				</div>
+			</div>
+		</div>
+
+		<div class="question" ng-show="q==10" ng-animate="{show: 'fadeIn'}">
+			<h3>Your results will go here (eventually).</h3>
+			<p ng-class="{warn: g1<1, bold: g1==1}">g1: {{g1}}</p>
+			<p>g2: {{g2}}</p>
+			<p>g3: {{g3}}</p>
+			<p>g4: {{g4}}</p>
+			<p>g5: {{g5}}</p>
+			<p>g6: {{g6}}</p>
+			<p>g7: {{g7}}</p>
+			<p>g8: {{g8}}</p>
+			<p>g9: {{g9}}</p>
+			<p>Your score is: {{getScore()}}</p>
+			<br>
+			
+			<p ng-show="getScore() > 15">It sounds like you have a great Agile shop.  Teams can always improve and it sounds
+			like yours takes that message to heart and applies it to it's work.</p>
+			
+			<p ng-show="getScore() >= 11 && getScore() <= 15">You have a lot of practices that support Agile but 
+			there is room for improvement.  At this level you could probably benifit greatly from some fine tuning.</p>
+			
+			<p ng-show="getScore() > 6 && getScore() < 11">You seem to understand the concept of working Agile 
+			but currently have few practices that are in alignment with the Agile principles. Your team might benifit
+			from some agile coaching or examining it's process. In a general sense, you can:
+			</p>
+			
+			<p ng-show="getScore() <= 6">You will die alone in an Agileless home, just you and some very selfish cats.</p>
+
+			<ul>
+				<li>Look at what each person actually does.</li>
+				<li>Encourage integrators, people that facilitate cooperation.</li>
+				<li>Increase the quantity of power.  Break down decision barriers.</li>
+				<li>Increase the shadow of the future.  Explore indicators that show future problems today.</li>
+				<li>Increase reciprocity. Increase the visibility of integration points and status indicators.</li>
+				<li>Encourage team members that cooperate and ask for help.  Discourage those that don't ask for help or cooperate.</li>
+			</ul>
+
+		</div>
+
+	</div> <!-- card -->
+
+	<!-- <div class="result-key">
+		9 x 2 = 18 - Agile.<br>
+		9 x 1 = 9 - Agile friendly, may not be too hard or too big of an adjustment to adopt agile.<br>
+		9 x -1 = -9 - Not Agile friendly, may be very hard to adopt Agile.  Experiment and get buy in first.<br>
+		9 x -2 = -18 - Very far from Agile.  Likely to be highly disruptive.  Little chance of success without complete cultural changes.<br>
+	</div> -->
+
+	<div class="prev-next">
+		<input type="button" ng-show="q < 10" ng-disabled="disablePrev()" ng-click="prev()" value="Prev">
+		<input type="button" ng-show="q < 9" ng-disabled="disableNext()" ng-click="next()" value="Next">
+		<input type="button" ng-show="q == 9" ng-disabled="disableShowResults()" ng-click="next()" value="Show Results">		<!--  -->
+	</div>
+	<!-- -->
+	<div class="quick-nav">	<!--  ng-show="surveyFinished"-->
+		<input type="button" ng-class="{active: q==1}" ng-disabled="maxQ < 1" ng-click="q = 1" value="1">
+		<input type="button" ng-class="{active: q==2}" ng-disabled="maxQ < 2" ng-click="q = 2" value="2">
+		<input type="button" ng-class="{active: q==3}" ng-disabled="maxQ < 3" ng-click="q = 3" value="3">
+		<input type="button" ng-class="{active: q==4}" ng-disabled="maxQ < 4" ng-click="q = 4" value="4">
+		<input type="button" ng-class="{active: q==5}" ng-disabled="maxQ < 5" ng-click="q = 5" value="5">
+		<input type="button" ng-class="{active: q==6}" ng-disabled="maxQ < 6" ng-click="q = 6" value="6">
+		<input type="button" ng-class="{active: q==7}" ng-disabled="maxQ < 7" ng-click="q = 7" value="7">
+		<input type="button" ng-class="{active: q==8}" ng-disabled="maxQ < 8" ng-click="q = 8" value="8">
+		<input type="button" ng-class="{active: q==9}" ng-disabled="maxQ < 9" ng-click="q = 9" value="9">
+		<input type="button" ng-show="q != 10 && surveyFinished" ng-disabled="disableShowResults()" ng-click="q = 10" value="Show Results">
+	</div>
+	
+</div>
